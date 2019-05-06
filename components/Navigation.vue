@@ -3,11 +3,18 @@
     <nav class="main-navigation">
       <el-breadcrumb separator="|">
         <el-breadcrumb-item :to="{ path: '/homepage' }"
+          class="el-icon-house"
           >homepage</el-breadcrumb-item
         >
         <el-breadcrumb-item
-          class="el-icon-goods"
-          ><a href="/homepage" ≈>Shopping bag</a></el-breadcrumb-item
+          ><a href="/homepage" ≈
+              class="el-icon-goods"
+          >Shopping bag</a></el-breadcrumb-item
+        >
+        <el-breadcrumb-item
+          ><a href="/homepage" ≈
+              class="el-icon-user"
+          >Admin</a></el-breadcrumb-item
         >
       </el-breadcrumb>
     </nav>
@@ -28,6 +35,6 @@ export default {
 .main-navigation {
   display: flex;
   padding: 1.5em 6em;
-  padding-left: 598px;
+  padding-left: 1000px;
 }
 </style>
