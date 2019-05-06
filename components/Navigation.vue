@@ -19,15 +19,18 @@
       </el-breadcrumb>
     </nav>
     <menuBar />
+    <Product />
   </section>
 </template>
 
 <script >
 import menuBar from "~/components/menuBar.vue";
+import Product from "~/components/Product.vue";
 export default {
   name: "Navigation",
   components: {
-    menuBar
+    menuBar,
+    Product
   }
 };
 </script>
