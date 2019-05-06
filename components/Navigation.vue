@@ -9,6 +9,7 @@
           class="el-icon-goods"
           ><a href="/homepage" ≈>Shopping bag</a></el-breadcrumb-item
         >
+        
       </el-breadcrumb>
     </nav>
     <menuBar />
