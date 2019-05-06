@@ -6,10 +6,9 @@
           >homepage</el-breadcrumb-item
         >
         <el-breadcrumb-item
-          ><a href="/homepage">promotion management</a></el-breadcrumb-item
+          class="el-icon-goods"
+          ><a href="/homepage" ≈>Shopping bag</a></el-breadcrumb-item
         >
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
       </el-breadcrumb>
     </nav>
     <menuBar />

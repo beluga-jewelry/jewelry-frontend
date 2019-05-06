@@ -39,6 +39,7 @@
           <el-menu-item index="2-6">Rings</el-menu-item>
         </el-submenu>
       </el-submenu>
+      <el-menu-item index="3">PROMOTIONS</el-menu-item>
     </el-menu>
   </section>
 </template>
@@ -61,7 +62,7 @@ export default {
 
 <style>
 .el-menu-demo {
-  padding-left: 150px;
+  padding-left: 500px;
 }
 .woman-line {
   color: black;
