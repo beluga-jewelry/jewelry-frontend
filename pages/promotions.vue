@@ -8,10 +8,10 @@
             class="image"
           />
           <div style="padding: 14px;">
-            <strong class="oldPrice">{{ pro.namePromo }}</strong>
+            <strong>{{ pro.namePromo }}</strong>
             <br />
             <i class="el-icon-caret-right"></i>
-            <!-- <span>Price: ${{ coll.price }}</span> -->
+            <span class="oldPrice">Price: ${{ pro.oldPrice }}</span>
           </div>
         </el-card>
       </el-col>
@@ -32,7 +32,7 @@ export default {
 <style >
 .oldPrice {
   color: gray;
-  text-decoration-line: line-through
+  text-decoration-line: line-through;
 }
 .head-content {
   padding: 5em 10em;

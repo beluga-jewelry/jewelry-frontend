@@ -66,7 +66,9 @@ export const state = () => ({
     ],
     promotions:[{
         id: 0,
-        namePromo:"1 free 1"
+        namePromo:"1 free 1",
+        oldPrice: 55,
+        newPrice:45
     
     }]
 })
