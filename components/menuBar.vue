@@ -7,7 +7,9 @@
       @select="handleSelect"
       active-text-color="#9ad8d3"
     >
-      <el-menu-item index="1">NEW ARRIVAL</el-menu-item>
+      <el-menu-item index="1">
+        <nuxt-link to="/homepage">NEW ARRIVAL </nuxt-link></el-menu-item
+      >
       <el-submenu index="2">
         <template slot="title">
           JEWELRY
@@ -39,7 +41,11 @@
           <el-menu-item index="2-6">Rings</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3">PROMOTIONS</el-menu-item>
+      <el-menu-item index="3">
+        <nuxt-link to="/promotions">
+          PROMOTIONS
+        </nuxt-link>
+      </el-menu-item>
     </el-menu>
   </section>
 </template>
