@@ -106,28 +106,31 @@ export default {
 
 <style>
 .image {
-    padding-left: 30px;
+    padding-left: 5px;
     object-fit: contain;
     margin: 15%;
-    /* width: 15px; */
+    /* size: 140px; */
+
+    width: 400px;
+    height: 400px;
 }
 .product-name {
-    margin-top: 17%;
-    padding-left: 15px;
+    margin-top: 20%;
+    padding-left: 100px;
     font-family: Arial;
 }
 .product-detail {
-    padding-left: 15px;
+    padding-left: 100px;
     margin-top: 7%;
     margin-bottom: 5%;
     font-size: 18px;
     color: gray
 }
 .product-price {
-    padding-left: 15px;
+    padding-left: 100px;
 }
 .product-quantity {
-    padding-left: 15px;
+    padding-left: 100px;
     margin-top: 5%;
     margin-bottom: 3%;
     font-size: 18px;
