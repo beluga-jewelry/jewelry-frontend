@@ -64,10 +64,7 @@
                     </el-col>
                 </el-row>
             </div>    
-            
-        </el-col>
-            
-        
+        </el-col>     
     </el-row>
   </section>
 </template>
