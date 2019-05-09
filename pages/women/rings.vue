@@ -1,6 +1,6 @@
 <template>
   <div class="head-content">
-    <JewCard v-for="coll in collection" :key="coll.id" :coll="coll" />
+    <JewCard v-for="coll in womanrings" :key="coll.id" :coll="coll" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   },
   data() {
     return {
-      collection: this.$store.state.womanrings
+      womanrings: this.$store.state.womanrings
     };
   }
 };

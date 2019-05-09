@@ -67,7 +67,7 @@ export const state = () => ({
 
     womanrings:[
         {
-            id: 1,
+            id: 2,
             name: 'Amethyst Ring',
             type: 'Woman Ring',
             material:'Amethyst',
@@ -76,7 +76,7 @@ export const state = () => ({
             image: 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-riviera-amethyst-ring-14k-white-gold-/52135_main?$phab_detailmain$'
         },
         {
-            id: 2,
+            id: 4,
             name: 'Pearl Ring',
             type: 'Woman Ring',
             material:'Pearl',
@@ -88,7 +88,7 @@ export const state = () => ({
     ],
     earrings:[
         {
-            id: 1,
+            id: 8,
             name: 'sapphire earring',
             type: 'earrings',
             material:'sapphire',
@@ -97,7 +97,7 @@ export const state = () => ({
             image: 'https://www.newbridgesilverware.com/Images/Models/Full/1390.Jpg'
         },
         {
-            id: 2,
+            id: 9,
             name: 'flora earring',
             type: 'earrings',
             material:'diamon',
@@ -106,7 +106,7 @@ export const state = () => ({
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYca14ZZJ2lryBpxFAex9TGq2khF0C-jCM_rKtTROFRAwMpMho'
         },
         {
-            id: 3,
+            id: 10,
             name: 'pearl earring',
             type: 'earrings',
             material:'pearl',
@@ -117,7 +117,7 @@ export const state = () => ({
     ],
     pendants:[
         {
-            id: 1,
+            id: 11,
             name: 'Amethyst pendant',
             type: 'pendant',
             material:'Amethyst',
@@ -126,7 +126,7 @@ export const state = () => ({
             image: 'https://cdn.shopify.com/s/files/1/0855/7610/products/franki-baker-faceted-round-amethyst-and-sterling-silver-pendant-necklace-5097009409.jpg?v=1527646277'
         },
         {
-            id: 2,
+            id: 12,
             name: 'diamond pendant',
             type: 'pendant',
             material:'diamond',
@@ -135,7 +135,7 @@ export const state = () => ({
             image: 'https://benmoss.com/sites/default/files/styles/product_image_catalog/public/products/1120206.jpg?itok=Zf591N2g'
         },
         {
-            id: 3,
+            id: 13,
             name: 'Sapphire pendant',
             type: 'pendant',
             material:'Sapphire',
@@ -147,7 +147,7 @@ export const state = () => ({
     ],
     bangles:[
         {
-            id: 1,
+            id: 6,
             name: 'diamond bangle',
             type: 'bangle',
             material:'diamond',
@@ -156,7 +156,7 @@ export const state = () => ({
             image: 'https://prodimages.velvetcase.com/images/BN632001/view1/big/pressure-setting-in-princess-shape-bangle-1452685636-y-w.jpg'
         },
         {
-            id: 2,
+            id: 13,
             name: 'Emerald bangle',
             type: 'bangle',
             material:'emerald',
@@ -165,7 +165,7 @@ export const state = () => ({
             image: 'https://a.1stdibscdn.com/archivesE/upload/1701400/j_17814831469460962605/DSC03715_org_z.jpg'
         },
         {
-            id: 3,
+            id: 14,
             name: 'pearl bangle',
             type: 'bangle',
             material:'pearl',
@@ -186,7 +186,7 @@ export const state = () => ({
             image: 'https://ae01.alicdn.com/kf/HTB1BuJ7KXXXXXcTXVXXq6xXFXXXq/0-85Ct-Timeless-love-Rings-Jewellery-for-Men-Non-allergy-925-sterling-silver-Diamond-Wedding-Ring.jpg'
         },
         {
-            id: 2,
+            id: 15,
             name: 'Sparkle Ring',
             type: 'Man Ring',
             material:'diamond',

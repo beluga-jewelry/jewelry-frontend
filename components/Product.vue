@@ -63,6 +63,7 @@
             <el-col :span="6">
               <div class="add-button">
                 <el-button icon="el-icon-goods">Add to bag</el-button>
+                <div>hh</div>
               </div>
             </el-col>
           </el-row>
@@ -76,6 +77,12 @@
 <script>
 export default {
   name: "Product",
+  props:{
+      product:{
+        type: Object,
+        default:undefined
+      }
+  },
   data() {
     return {
       id: Number(this.$route.params.id),
