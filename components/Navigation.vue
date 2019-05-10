@@ -10,11 +10,11 @@
             Shopping bag
           </nuxt-link>
         </el-breadcrumb-item>
-        <el-breadcrumb-item
-          ><a href="/homepage" ≈ class="el-icon-user"
-            >Admin</a
-          ></el-breadcrumb-item
-        >
+        <el-breadcrumb-item>
+          <nuxt-link :to="{ path: `/login` }">
+            Admin
+          </nuxt-link>
+        </el-breadcrumb-item>
       </el-breadcrumb>
     </nav>
     <menuBar />

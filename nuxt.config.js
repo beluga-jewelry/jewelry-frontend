@@ -1,6 +1,5 @@
 const pkg = require('./package')
 
-
 module.exports = {
   mode: 'universal',
 
@@ -42,6 +41,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+
   ],
 
   /*
@@ -49,7 +49,7 @@ module.exports = {
   */
   build: {
     transpile: [/^element-ui/],
-    
+
     /*
     ** You can extend webpack config here
     */
