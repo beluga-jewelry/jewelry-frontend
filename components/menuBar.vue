@@ -26,11 +26,27 @@
               </strong>
             </div>
           </template>
-
-          <el-menu-item index="2-1">Rings</el-menu-item>
-          <el-menu-item index="2-2">Earrings</el-menu-item>
-          <el-menu-item index="2-3">Pendents</el-menu-item>
-          <el-menu-item index="2-4">Bangles</el-menu-item>
+          
+          <el-menu-item index="2-1">
+            <nuxt-link to="/women/rings" class="font-colour">
+                Rings
+            </nuxt-link>
+          </el-menu-item>
+          <el-menu-item index="2-2">
+            <nuxt-link to="/women/earrings" class="font-colour">
+                Earrings
+            </nuxt-link>
+          </el-menu-item>
+          <el-menu-item index="2-3">
+            <nuxt-link to="/women/pendants" class="font-colour">
+                Pendants 
+            </nuxt-link>
+          </el-menu-item>
+          <el-menu-item index="2-4">
+            <nuxt-link to="/women/bangles" class="font-colour">
+                Bangles 
+            </nuxt-link>
+          </el-menu-item>
         </el-submenu>
         <!-- men -->
         <el-submenu index="2-5">
@@ -41,7 +57,11 @@
               </strong>
             </div>
           </template>
-          <el-menu-item index="2-6">Rings</el-menu-item>
+          <el-menu-item index="2-6">
+            <nuxt-link to="/men/rings" class="font-colour">
+                Rings
+            </nuxt-link>
+          </el-menu-item>
         </el-submenu>
       </el-submenu>
       <el-menu-item index="3">
@@ -76,6 +96,10 @@ export default {
 .woman-line {
   color: black;
 }
+
+.font-colour{
+  color: rgb(113, 189, 189);
+
 .logo-jew {
   height: 100px;
   padding-left: 650px;
