@@ -97,8 +97,9 @@ export default {
   color: black;
 }
 
-.font-colour{
+.font-colour {
   color: rgb(113, 189, 189);
+}
 
 .logo-jew {
   height: 100px;
