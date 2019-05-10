@@ -1,5 +1,8 @@
 <template>
   <section class="container">
+    <nuxt-link :to="{path:`/homepage`}">
+      <img class="logo-jew" src="~/assets/belugaLogo.png"/>
+    </nuxt-link>
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
@@ -72,6 +75,11 @@ export default {
 }
 .woman-line {
   color: black;
+}
+.logo-jew {
+  height: 100px;
+  padding-left: 650px;
+  
 }
 </style>
 
