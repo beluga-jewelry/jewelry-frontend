@@ -2,6 +2,9 @@
 
 <script>
 export default {
-  layout: "login"
+  layout: "login",
+  mounted() {
+    this.$store.dispatch("save");
+  }
 };
 </script>

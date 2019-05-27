@@ -16,7 +16,7 @@ export const state = () => ({
             material: 'Amethyst',
             color: 'puple',
             price: 100,
-            image: 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-riviera-amethyst-ring-14k-white-gold-/52135_main?$phab_detailmain$'
+            image: 'https://www.marrymediamonds.com/media/catalog/product/cache/1/thumbnail/1200x/17f82f742ffe127f42dca9de82fb58b1/h/a/harmony_ring_18k_white_gold_platinum_1.jpg'
         },
         {
             id: 3,
@@ -97,4 +97,12 @@ export const getters = {
     //     }
     //     return product
     // }
+}
+export const actions = {
+    async save({ commit }) {
+        console.log("kk")
+        let save = await this.$axios.$get("http://localhost:4000/");
+        console.log(save)
+        console.log(save.message)
+    }
 }
