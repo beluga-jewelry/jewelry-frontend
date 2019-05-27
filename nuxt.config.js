@@ -42,8 +42,16 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
-
+  proxy: {
+    '/api': {
+      target: 'http://beluga-backend.herokuapp.com',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
+  },
 
   /*
   ** Build configuration

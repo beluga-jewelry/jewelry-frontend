@@ -1,12 +1,20 @@
 <template>
   <section class="head-admin">
-    <h1>hh</h1>
+    <el-calendar v-model="value"> </el-calendar>
   </section>
 </template>
 
 <script>
 export default {
   layout: "adminDefault",
+  data() {
+    return {
+      value: new Date()
+    };
+  },
+  mounted() {
+    this.$store.dispatch("productNew");
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
