@@ -1,8 +1,12 @@
-<template> </template>
+<template>
+  <div>
+    hello
+  </div>
+</template>
 
 <script>
 export default {
-  layout: "login",
+  layout: "adminDefault",
   mounted() {
     this.$store.dispatch("save");
   }

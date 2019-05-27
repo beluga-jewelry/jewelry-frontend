@@ -1,6 +1,6 @@
 <template>
   <!-- <el-row> -->
-  <nuxt-link :to="{ path: `/products/${coll.id}` }">
+  <nuxt-link :to="{ path: `/products/${coll.id}` }" >
     <el-col :span="5" offset="1">
       <el-card :body-style="{ padding: '0px' }" shadow="hover">
         <img :src="coll.image" class="image_card" />
