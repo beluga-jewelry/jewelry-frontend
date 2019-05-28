@@ -12,7 +12,8 @@ export const state = () => ({
         price: '$14.99',
     }],
     manrings: [],
-    promotions: []
+    promotions: [],
+    adminPromotion: []
 })
 
 export const actions = {
@@ -89,6 +90,22 @@ export const actions = {
         }
         console.log(getPromo)
         commit('setPromo', promo)
+    },
+    async adminPromotion({ commit }) {
+        const promoAdmin = []
+        let pro = await this.$axios.$get("/api/promotion/")
+        for (const i of pro) {
+
+            const temp = {
+                promotion_name: i['promotion_name'],
+                discount: i['discount'] * 100,
+                begin_date: i['begin_date'].split("T")[0],
+                end_date: i['end_date'].split("T")[0]
+            }
+            promoAdmin.push(temp)
+        }
+        console.log(promoAdmin)
+        commit('setAdminPromo', promoAdmin)
     }
 }
 
@@ -116,7 +133,7 @@ export const getters = {
                 return j
             }
         }
-    }
+    },
 }
 
 export const mutations = {
@@ -146,6 +163,9 @@ export const mutations = {
     },
     addToCart(state, payload) {
         state.shoppingbag.push(payload);
+    },
+    setAdminPromo(state, promoAdmin) {
+        state.adminPromotion = promoAdmin
     }
 
 }
