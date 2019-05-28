@@ -63,7 +63,6 @@
             <el-col :span="6">
               <div class="add-button">
                 <el-button icon="el-icon-goods">Add to bag</el-button>
-                <div>hh</div>
               </div>
             </el-col>
           </el-row>
@@ -78,11 +77,11 @@
 
 export default {
   name: "Product",
-  props:{
-      product:{
-        type: Object,
-        default:undefined
-      }
+  props: {
+    product: {
+      type: Object,
+      default: undefined
+    }
   },
   data() {
     return {
@@ -114,9 +113,10 @@ export default {
       //   value: ""
     };
   },
+
   computed: {
     product() {
-      return this.$store.state.collections[this.id - 1];
+      return this.$store.getters.isProductId(this.id);
     },
     promo() {
       return this.$store.getters.isPromotion(this.id);

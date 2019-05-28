@@ -12,7 +12,7 @@
         </el-breadcrumb-item>
         <el-breadcrumb-item>
           <nuxt-link :to="{ path: `/login` }">
-            Admin
+           Admin
           </nuxt-link>
         </el-breadcrumb-item>
       </el-breadcrumb>

@@ -1,7 +1,7 @@
 <template>
   <section class="container">
-    <nuxt-link :to="{path:`/homepage`}">
-      <img class="logo-jew" src="~/assets/belugaLogo.png"/>
+    <nuxt-link :to="{ path: `/homepage` }">
+      <img class="logo-jew" src="~/assets/belugaLogo.png" />
     </nuxt-link>
     <el-menu
       :default-active="activeIndex"
@@ -26,25 +26,25 @@
               </strong>
             </div>
           </template>
-          
+
           <el-menu-item index="2-1">
             <nuxt-link to="/women/rings" class="font-colour">
-                Rings
+              Rings
             </nuxt-link>
           </el-menu-item>
           <el-menu-item index="2-2">
             <nuxt-link to="/women/earrings" class="font-colour">
-                Earrings
+              Earrings
             </nuxt-link>
           </el-menu-item>
           <el-menu-item index="2-3">
             <nuxt-link to="/women/pendants" class="font-colour">
-                Pendants 
+              Pendants
             </nuxt-link>
           </el-menu-item>
           <el-menu-item index="2-4">
             <nuxt-link to="/women/bangles" class="font-colour">
-                Bangles 
+              Bangles
             </nuxt-link>
           </el-menu-item>
         </el-submenu>
@@ -59,7 +59,7 @@
           </template>
           <el-menu-item index="2-6">
             <nuxt-link to="/men/rings" class="font-colour">
-                Rings
+              Rings
             </nuxt-link>
           </el-menu-item>
         </el-submenu>
@@ -91,19 +91,18 @@ export default {
 
 <style>
 .el-menu-demo {
-  padding-left: 500px;
+  padding-left: 450px;
 }
 .woman-line {
   color: black;
 }
 
-.font-colour{
+.font-colour {
   color: rgb(113, 189, 189);
 }
 .logo-jew {
   height: 100px;
-  padding-left: 650px;
-  
+  padding-left: 550px;
 }
 </style>
 

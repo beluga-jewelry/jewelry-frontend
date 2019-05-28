@@ -1,8 +1,7 @@
 <template>
-  <section class= "bgColor">
-    <nuxt-link :to="{path:`/homepage`}">
-
-    <img class="logo" src="~/assets/belugaLogo.png"/>
+  <section class="bgColor">
+    <nuxt-link :to="{ path: `/homepage` }">
+      <img class="logo" src="~/assets/belugaLogo.png" />
     </nuxt-link>
     <div class="container_login">
       <el-form>
@@ -46,7 +45,7 @@ export default {
     onSubmit() {
       if (this.user.username == "admin" && this.user.password == 1234) {
         this.userExist = true;
-        this.$router.push({ path: "/admin" });
+        this.$router.push({ path: "./admin/admin" });
       }
 
       if (!this.userExist) {
@@ -70,16 +69,14 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 150px
-
+  padding-bottom: 150px;
 }
 
-.logo{
+.logo {
   height: 100px;
   padding-left: 40px;
-
 }
-.bgColor{
+.bgColor {
   background-image: linear-gradient(
     to right bottom,
     #c0ffee,
@@ -89,6 +86,4 @@ export default {
     #79b2b7
   );
 }
-
-
 </style>
