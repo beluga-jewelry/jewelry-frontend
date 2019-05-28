@@ -11,11 +11,13 @@ export default {
     JewCard
   },
   mounted() {
+    this.$store.dispatch("productAll");
     this.$store.dispatch("productNew");
+    this.$store.dispatch("promotions");
   },
   computed: {
     collection() {
-      return this.$store.state.collections;
+      return this.$store.state.newCollection;
     }
   }
 };
