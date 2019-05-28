@@ -74,6 +74,7 @@ export const actions = {
         for (const i of getMenProduct) {
             ringmen.push(i)
         }
+        console.log(getMenProduct)
         commit('setProductMen', ringmen)
     },
     async productNew({ commit }) {
