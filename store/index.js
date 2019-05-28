@@ -6,7 +6,6 @@ export const state = () => ({
     earrings: [],
     pendants: [],
     bangles: [],
-    ],
     shoppingbag: [{
         imageUrl: require('../assets/ring.jpg'),
         name: 'Ring',
