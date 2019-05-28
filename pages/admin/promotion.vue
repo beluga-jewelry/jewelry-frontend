@@ -3,7 +3,7 @@
     <el-row>
       <br>
       <div>
-        <h1>Customer order</h1>
+        <h1>Current Promotion</h1>
       </div>
     </el-row>
     <el-row>
@@ -12,21 +12,21 @@
         :data="tableData"
         style="width: 100%">
         <el-table-column
-          prop="customer"
-          label="Customer_name"
+          prop="promotion"
+          label="Promotion_name"
           width="200">
         </el-table-column>
         <el-table-column
-          prop="product"
-          label="Product">
+          prop="discount"
+          label="Discount">
         </el-table-column>
         <el-table-column 
-          prop="price"
-          label="Price">
+          prop="begin"
+          label="Begin_date">
         </el-table-column>
         <el-table-column 
-          prop="date"
-          label="Date_sale">
+          prop="end"
+          label="End_date">
         </el-table-column>
       </el-table>
     </el-row>
@@ -40,20 +40,20 @@
         return {
           total_sale: 229,
           tableData: [{
-            customer: 'jamp',
-            product: 'diamond pendant',
-            price: 66,
-            date: '31/05/2019'
+            promotion: '1 buy 1',
+            discount: '50%',
+            begin: '5/06/2018',
+            end: '5/06/2018'
           }, {
-            customer: 'mint',
-            product: 'pearl earrings',
-            price: 30,
-            date: '25/03/2019'
+            promotion: 'midyear sale',
+            discount: '20%',
+            begin: '1/05/2018',
+            end: '31/06/2018'
           }, {
-            customer: 'faii',
-            product: 'saffire bangle',
-            price: 23,
-            date: '3/02/2018'
+            promotion: 'yearend sale',
+            discount: '30%',
+            begin: '15/12/2018',
+            end: '15/01/2019'
           }],
         }
       }

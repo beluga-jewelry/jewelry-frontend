@@ -13,7 +13,6 @@
         >
           <el-submenu index="1">
             <template slot="title">
-              <i class="el-icon-location"></i>
               <span>Sales</span>
             </template>
               <nuxt-link to="/admin/sales/dailyReport" class="font-colour">
@@ -34,38 +33,24 @@
             </el-submenu>
           <nuxt-link to="/admin/inStock" class="font-colour">  
             <el-menu-item index="2" class="font-colour">
-              <i class="el-icon-menu"></i>
                 In Stock
             </el-menu-item>
           </nuxt-link>  
           <nuxt-link to="/admin/customerOrder" class="font-colour">  
             <el-menu-item index="3" class="font-colour">
-              <i class="el-icon-menu"></i>
                   Customer Order
             </el-menu-item>
           </nuxt-link> 
           <nuxt-link to="/admin/productHistory" class="font-colour"> 
             <el-menu-item index="4" class="font-colour">
-              <i class="el-icon-menu"></i>
                   Product History
             </el-menu-item>
           </nuxt-link>  
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>Promotion</span>
-            </template>
-            <nuxt-link to="/admin/promotion/add" class="font-colour">
-              <el-menu-item index="5-1" class="font-colour">
-                Add
-              </el-menu-item>
-            </nuxt-link>              
-            <nuxt-link to="/admin/promotion/usage" class="font-colour">            
-              <el-menu-item index="5-2" class="font-colour">
-                Usage
-              </el-menu-item>
-            </nuxt-link>  
-          </el-submenu>
+          <nuxt-link to="/admin/promotion" class="font-colour">
+            <el-menu-item index="5" class="font-colour">
+                Promotion
+            </el-menu-item>
+          </nuxt-link>              
         </el-menu>
       </el-col>
     </el-row>
