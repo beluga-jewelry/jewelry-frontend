@@ -1,5 +1,6 @@
 <template>
   <div class="head-content">
+<<<<<<< HEAD
     <el-row>
       <el-col :span="20">
        <img :src="imageLogo" class="logo">
@@ -21,11 +22,18 @@
         </el-card>
       </el-col>
     </el-row>
+=======
+    <JewCard v-for="coll in promotion" :key="coll.id" :coll="coll" />
+>>>>>>> 99df153ede03594d9c301fee92a1b5c6f50d9853
   </div>
 </template>
 
 <script>
+import JewCard from "~/components/JewCard.vue";
 export default {
+  components: {
+    JewCard
+  },
   data() {
     return {
       promotion: this.$store.state.promotions,
@@ -49,7 +57,7 @@ export default {
   float: right;
 }
 
-.image {
+.image_promo {
   width: 100%;
   display: block;
 }

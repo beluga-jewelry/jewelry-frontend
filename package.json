@@ -12,12 +12,14 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
+    "element-ui": "2.7.2",
     "express": "^4.16.4",
-    "element-ui": "2.7.2"
+    "fs": "0.0.1-security",
+    "nuxt": "^2.4.0"
   },
   "devDependencies": {
     "babel-plugin-component": "^1.1.1",
+    "dotenv": "^8.0.0",
     "nodemon": "^1.18.9"
   }
 }

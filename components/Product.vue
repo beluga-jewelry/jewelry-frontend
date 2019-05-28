@@ -1,71 +1,74 @@
 <template>
   <section class="container">
     <el-row>
-        <el-col 
-         :span="12">
-            <div class="grid">
-                <img
-                    class="image"
-                    :src="imageUrl"
-                />
-            </div>
-        </el-col>
-        <el-col
-            :span="12">
-            <div class="product-name">
-                <h2>
-                    Ring
-                </h2>
-                <el-divider></el-divider>
-            </div>
-            <div class="product-detail">
-                <h4>Material: Diamond</h4>
-            </div>
-            <div class="product-price">
-                <h2>Price $14.99</h2>
-            </div>
-            <el-divider></el-divider>
-            <div class="product-quantity">
-                <el-row>
-                    <el-col
-                    :span="4">
-                        <h4>
-                            Quantity
-                        </h4>
-                    </el-col>
-                    <el-input-number v-model="num" @change="handleChange" :min="1" :max="10"></el-input-number>
-                </el-row>
-                <el-row>
-                    <el-col
-                    :span="4">
-                        <div class="product-size">
-                            <h4>Size</h4>
-                        </div>
-                    </el-col>
-                    <el-col
-                    :span="4">
-                        <div class="size-choice">
-                          <el-select v-model="value" placeholder="Select size">
-                                <el-option
-                                    v-for="item in options"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>  
-                        </div>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col
-                    :span="6">
-                        <div class="add-button">
-                            <el-button icon="el-icon-goods" @click="addtocart">Add to bag</el-button>
-                        </div>
-                    </el-col>
-                </el-row>
-            </div>    
-        </el-col>     
+      <el-col :span="12">
+        <div class="grid">
+          <img class="image" :src="product.image" />
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="product-name">
+          <h2>
+            {{ product.name }}
+          </h2>
+        </div>
+        <div class="product-detail">
+          <h4>Material: {{ product.material }}</h4>
+        </div>
+        <!-- promotion contidion -->
+        <div v-if="promo" class="promo-product-price">
+          <h2 class="cross-line">Price ${{ product.price }}</h2>
+          <h2>Price ${{ promotionValue.newPrice }}</h2>
+        </div>
+        <div v-else class="promo-product-price">
+          <h2>Price ${{ product.price }}</h2>
+        </div>
+        <!--  -->
+        <el-divider></el-divider>
+        <div class="product-quantity">
+          <el-row>
+            <el-col :span="4">
+              <h4>
+                Quantity
+              </h4>
+            </el-col>
+            <el-input-number
+              v-model="num"
+              @change="handleChange"
+              :min="1"
+              :max="10"
+            ></el-input-number>
+          </el-row>
+          <el-row>
+            <el-col :span="4">
+              <div class="product-size">
+                <h4>Size</h4>
+              </div>
+            </el-col>
+            <el-col :span="4">
+              <div class="size-choice">
+                <el-select v-model="value" placeholder="Select size">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <div class="add-button">
+                <el-button icon="el-icon-goods">Add to bag</el-button>
+                <div>hh</div>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-col>
     </el-row>
   </section>
 </template>
@@ -75,28 +78,52 @@
 
 export default {
   name: "Product",
+  props:{
+      product:{
+        type: Object,
+        default:undefined
+      }
+  },
   data() {
     return {
-      imageUrl: require('../assets/ring.jpg'),
-      num: 1,
-      options: [{
-          value: 'Option1',
-          label: 'Option1'
-        }, {
-          value: 'Option2',
-          label: 'Option2'
-        }, {
-          value: 'Option3',
-          label: 'Option3'
-        }, {
-          value: 'Option4',
-          label: 'Option4'
-        }, {
-          value: 'Option5',
-          label: 'Option5'
-        }],
-        value: ''
+      id: Number(this.$route.params.id),
+      visible: false,
+      num: 1
+      //   options: [
+      //     {
+      //       value: "Option1",
+      //       label: "Option1"
+      //     },
+      //     {
+      //       value: "Option2",
+      //       label: "Option2"
+      //     },
+      //     {
+      //       value: "Option3",
+      //       label: "Option3"
+      //     },
+      //     {
+      //       value: "Option4",
+      //       label: "Option4"
+      //     },
+      //     {
+      //       value: "Option5",
+      //       label: "Option5"
+      //     }
+      //   ],
+      //   value: ""
     };
+  },
+  computed: {
+    product() {
+      return this.$store.state.collections[this.id - 1];
+    },
+    promo() {
+      return this.$store.getters.isPromotion(this.id);
+    },
+    promotionValue() {
+      return this.$store.state.promotions[this.id - 1];
+    }
   },
   methods: {
       handleChange(value) {
@@ -107,6 +134,7 @@ export default {
         console.log(options)
       }
     }
+  }
 };
 </script>
 
@@ -119,36 +147,43 @@ export default {
     height: 400px;
 }
 .product-name {
-    margin-top: 20%;
-    padding-left: 100px;
-    font-family: Arial;
+  margin-top: 20%;
+  padding-left: 100px;
+  font-family: Arial;
 }
 .product-detail {
-    padding-left: 100px;
-    margin-top: 7%;
-    margin-bottom: 5%;
-    font-size: 18px;
-    color: gray
+  padding-left: 100px;
+  margin-top: 7%;
+  margin-bottom: 5%;
+  font-size: 18px;
+  color: gray;
 }
 .product-price {
-    padding-left: 100px;
+  padding-left: 100px;
+}
+.promo-product-price {
+  padding-left: 100px;
+}
+.cross-line {
+  color: #9ad8d3;
+  text-decoration-line: line-through;
 }
 .product-quantity {
-    padding-left: 100px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    font-size: 18px;
-    color: gray
+  padding-left: 100px;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  font-size: 18px;
+  color: gray;
 }
 .product-size {
-    margin-top: 18%;
+  margin-top: 18%;
 }
 .size-choice {
-    margin-top: 13%;
-    color: #9ad8d3;
+  margin-top: 13%;
+  color: #9ad8d3;
 }
 .add-button {
-    margin-top: 5%;
-    /* background-color: #9ad8d3; */
+  margin-top: 5%;
+  /* background-color: #9ad8d3; */
 }
 </style>
