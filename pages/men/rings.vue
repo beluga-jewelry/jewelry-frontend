@@ -10,10 +10,13 @@ export default {
   components: {
     JewCard
   },
-  data() {
-    return {
-      manrings: this.$store.state.manrings
-    };
+  mounted() {
+    this.$store.dispatch("productMen");
+  },
+  computed: {
+    manrings() {
+      return this.$store.state.manrings;
+    }
   }
 };
 </script>

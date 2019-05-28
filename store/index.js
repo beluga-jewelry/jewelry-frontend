@@ -175,27 +175,7 @@ export const state = () => ({
         },
 
     ],
-    manrings: [
-        {
-            id: 1,
-            name: 'diamond Ring',
-            type: 'Man Ring',
-            material: 'diamond',
-            color: 'puple',
-            price: 100,
-            image: 'https://ae01.alicdn.com/kf/HTB1BuJ7KXXXXXcTXVXXq6xXFXXXq/0-85Ct-Timeless-love-Rings-Jewellery-for-Men-Non-allergy-925-sterling-silver-Diamond-Wedding-Ring.jpg'
-        },
-        {
-            id: 15,
-            name: 'Sparkle Ring',
-            type: 'Man Ring',
-            material: 'diamond',
-            color: 'white',
-            price: 95,
-            image: 'https://ae01.alicdn.com/kf/HTB1LKoFIVXXXXc3XXXXq6xXFXXX8/Super-Brilliant-Solid-White-Gold-Man-Diamond-Ring-Jewelry-5CT-Male-Jewelry-Moissanite-Diamond-Ring-for.jpg'
-        },
-
-    ],
+    manrings: [],
 
     promotions: [{
         id: 1,
@@ -220,10 +200,13 @@ export const getters = {
             }
         }
     },
-    showProduct: (state) => {
-        console.log(state.collections)
-        return state.collections
-    }
+    isProductId: (state) => (id) => {
+        for (const i of state.collections) {
+            if (id == i._id) {
+                return i
+            }
+        }
+    },
     // collectPromo: state => {
     //     const product = []
     //     for (const i of state.collections) {
@@ -236,19 +219,30 @@ export const getters = {
     //     return product
     // }
 }
+export const mutations = {
+    setNewCollections(state, product) {
+        state.collections = product
+    },
+    setProductMen(state, ringmen) {
+        state.manrings = ringmen
+    }
+}
 export const actions = {
     async productNew({ commit }) {
-        // const temp = []
-        console.log("kk")
-        let save = await this.$axios.$get("/api/new");
-        console.log(save)
-        console.log(save.data)
-        // return save
-        for (const i of save) {
-            collections.push(i.data)
-            console.log(i.data)
+        const product = []
+        let newProduct = await this.$axios.$get("/api/product");
+        for (const i of newProduct) {
+            product.push(i)
         }
-
-        // return temp
+        commit('setNewCollections', product)
+    },
+    async productMen({ commit }) {
+        const ringmen = []
+        let getMenProduct = await this.$axios.$get("/api/product/man/ring");
+        console.log(getMenProduct);
+        for (const i of getMenProduct) {
+            ringmen.push(i)
+        }
+        commit('setProductMen', ringmen)
     }
 }
