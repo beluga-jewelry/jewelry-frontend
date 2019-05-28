@@ -25,6 +25,10 @@ export default {
   components: {
     JewCard
   },
+  computed: {
+    promotion() {
+      return this.$store.state.promotions;
+    },
   data() {
     return {
       promotion: this.$store.state.promotions,
