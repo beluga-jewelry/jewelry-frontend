@@ -10,10 +10,10 @@ export default {
   components: {
     JewCard
   },
-  data() {
-    return {
-      promotion: this.$store.state.promotions
-    };
+  computed: {
+    promotion() {
+      return this.$store.state.promotions;
+    }
   }
 };
 </script>

@@ -12,7 +12,7 @@
             <span class="cross-line"> Price: ${{ coll.price }}</span>
             <br />
             <i class="el-icon-caret-right"></i>
-            <span>Price: ${{ promotionValue.newPrice }}</span>
+            <span>Price: ${{ promoPrince }}</span>
           </div>
           <div v-else>
             <i class="el-icon-caret-right"></i>
@@ -37,10 +37,15 @@ export default {
   },
   computed: {
     promo() {
-      return this.$store.getters.isPromotion(this.coll.id);
+      return this.$store.getters.isPromotion(this.coll._id);
     },
     promotionValue() {
-      return this.$store.state.promotions[this.coll.id - 1];
+      return this.$store.getters.getPromotions(this.coll._id);
+    },
+    promoPrince() {
+      const temp = this.$store.getters.getPromotions(this.coll._id);
+      const num = temp.discount * temp.price;
+      return num.toFixed(2);
     }
   }
 };

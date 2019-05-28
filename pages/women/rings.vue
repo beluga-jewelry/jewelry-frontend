@@ -10,10 +10,13 @@ export default {
   components: {
     JewCard
   },
-  data() {
-    return {
-      womanrings: this.$store.state.womanrings
-    };
+  mounted() {
+    this.$store.dispatch("productWomanRing");
+  },
+  computed: {
+    womanrings() {
+      return this.$store.state.womanrings;
+    }
   }
 };
 </script>

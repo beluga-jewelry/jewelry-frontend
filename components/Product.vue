@@ -18,7 +18,10 @@
         <!-- promotion contidion -->
         <div v-if="promo" class="promo-product-price">
           <h2 class="cross-line">Price ${{ product.price }}</h2>
-          <h2>Price ${{ promotionValue.newPrice }}</h2>
+          <h2 class="promotions_css">
+            Promotions "{{ promotionValue.promotion_name }}"
+          </h2>
+          <h2>Price ${{ promoPrince }}</h2>
         </div>
         <div v-else class="promo-product-price">
           <h2>Price ${{ product.price }}</h2>
@@ -87,32 +90,8 @@ export default {
       id: Number(this.$route.params.id),
       visible: false,
       num: 1
-      //   options: [
-      //     {
-      //       value: "Option1",
-      //       label: "Option1"
-      //     },
-      //     {
-      //       value: "Option2",
-      //       label: "Option2"
-      //     },
-      //     {
-      //       value: "Option3",
-      //       label: "Option3"
-      //     },
-      //     {
-      //       value: "Option4",
-      //       label: "Option4"
-      //     },
-      //     {
-      //       value: "Option5",
-      //       label: "Option5"
-      //     }
-      //   ],
-      //   value: ""
     };
   },
-
   computed: {
     product() {
       return this.$store.getters.isProductId(this.id);
@@ -121,7 +100,12 @@ export default {
       return this.$store.getters.isPromotion(this.id);
     },
     promotionValue() {
-      return this.$store.state.promotions[this.id - 1];
+      return this.$store.getters.getPromotions(this.id);
+    },
+    promoPrince() {
+      const temp = this.$store.getters.getPromotions(this.id);
+      const num = temp.discount * temp.price;
+      return num.toFixed(2);
     }
   },
   methods: {
@@ -181,5 +165,8 @@ export default {
 .add-button {
   margin-top: 5%;
   /* background-color: #9ad8d3; */
+}
+.promotions_css {
+  color: red;
 }
 </style>
