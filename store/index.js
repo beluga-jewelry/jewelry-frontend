@@ -65,19 +65,19 @@ export const state = () => ({
         // },
     ],
 
-    promotions:[{
+    promotions: [{
         id: 0,
-        namePromo:"1 free 1",
+        namePromo: "1 free 1",
         oldPrice: 55,
-        newPrice:45
-    
+        newPrice: 45
+
     }],
     shoppingbag: [{
         imageUrl: require('../assets/ring.jpg'),
         name: 'Ring',
         price: '$14.99',
     }],
-    womanrings:[
+    womanrings: [
         {
             id: 2,
             name: 'Amethyst Ring',
@@ -212,12 +212,29 @@ export const mutatuion = {
 
 export const actions = {
     addToCart({ commit }, payload) {
-        const shopping =  {
-        imageUrl: payload.imageUrl,
-        name: payload.name,
-        price: payload.price,
+        const shopping = {
+            imageUrl: payload.imageUrl,
+            name: payload.name,
+            price: payload.price,
         }
         commit('addToCart', shopping);
+    },
+    async productNew({ commit }) {
+        const product = []
+        let newProduct = await this.$axios.$get("/api/product");
+        for (const i of newProduct) {
+            product.push(i)
+        }
+        commit('setNewCollections', product)
+    },
+    async productMen({ commit }) {
+        const ringmen = []
+        let getMenProduct = await this.$axios.$get("/api/product/man/ring");
+        console.log(getMenProduct);
+        for (const i of getMenProduct) {
+            ringmen.push(i)
+        }
+        commit('setProductMen', ringmen)
     }
 }
 
@@ -259,22 +276,4 @@ export const mutations = {
         state.manrings = ringmen
     }
 }
-export const actions = {
-    async productNew({ commit }) {
-        const product = []
-        let newProduct = await this.$axios.$get("/api/product");
-        for (const i of newProduct) {
-            product.push(i)
-        }
-        commit('setNewCollections', product)
-    },
-    async productMen({ commit }) {
-        const ringmen = []
-        let getMenProduct = await this.$axios.$get("/api/product/man/ring");
-        console.log(getMenProduct);
-        for (const i of getMenProduct) {
-            ringmen.push(i)
-        }
-        commit('setProductMen', ringmen)
-    }
-}
+

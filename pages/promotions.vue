@@ -1,11 +1,5 @@
 <template>
   <div class="head-content">
-<<<<<<< HEAD
-    <el-row>
-      <el-col :span="20">
-       <img :src="imageLogo" class="logo">
-      </el-col>
-    </el-row>
     <el-row>
       <el-col :span="5" v-for="pro in promotion" :key="pro.id" offset="1">
         <el-card :body-style="{ padding: '0px' }" shadow="hover">
@@ -22,9 +16,6 @@
         </el-card>
       </el-col>
     </el-row>
-=======
-    <JewCard v-for="coll in promotion" :key="coll.id" :coll="coll" />
->>>>>>> 99df153ede03594d9c301fee92a1b5c6f50d9853
   </div>
 </template>
 
