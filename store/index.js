@@ -15,6 +15,7 @@ export const state = () => ({
     }],
     manrings: [],
     promotions: [],
+<<<<<<< HEAD
     customerOrder : [],
     inStock: [],
     History: [],
@@ -25,6 +26,9 @@ export const state = () => ({
     Yearly: [],
     totalSaleY: 0
 
+=======
+    adminPromotion: []
+>>>>>>> d78cd0aa60851648e8c817cb7cf15b7590a31c70
 })
 
 export const actions = {
@@ -102,6 +106,7 @@ export const actions = {
         console.log(getPromo)
         commit('setPromo', promo)
     },
+<<<<<<< HEAD
     async order({commit}) {
         const order = []
         let getOrder = await this.$axios.$get("/api/customer/order")
@@ -205,6 +210,23 @@ export const actions = {
         console.log(yearly)
         commit('setTotalPY', yy)
         commit('setYearly', yearly)
+=======
+    async adminPromotion({ commit }) {
+        const promoAdmin = []
+        let pro = await this.$axios.$get("/api/promotion/")
+        for (const i of pro) {
+
+            const temp = {
+                promotion_name: i['promotion_name'],
+                discount: i['discount'] * 100,
+                begin_date: i['begin_date'].split("T")[0],
+                end_date: i['end_date'].split("T")[0]
+            }
+            promoAdmin.push(temp)
+        }
+        console.log(promoAdmin)
+        commit('setAdminPromo', promoAdmin)
+>>>>>>> d78cd0aa60851648e8c817cb7cf15b7590a31c70
     }
 
     
@@ -292,5 +314,8 @@ export const mutations = {
     setTotalPY(state, tpy){
         state.totalSaleY = tpy
     },
+    setAdminPromo(state, promoAdmin) {
+        state.adminPromotion = promoAdmin
+    }
 
 }
