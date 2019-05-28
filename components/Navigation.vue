@@ -6,7 +6,7 @@
           >homepage</el-breadcrumb-item
         >
         <el-breadcrumb-item>
-          <nuxt-link :to="{ path: `/homepage` }" class="el-icon-goods">
+          <nuxt-link :to="{ path: `/bagpage` }" class="el-icon-goods">
             Shopping bag
           </nuxt-link>
         </el-breadcrumb-item>

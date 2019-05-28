@@ -99,7 +99,7 @@ export default {
 
 .font-colour{
   color: rgb(113, 189, 189);
-
+}
 .logo-jew {
   height: 100px;
   padding-left: 650px;
