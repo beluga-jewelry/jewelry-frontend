@@ -1,6 +1,6 @@
 <template>
   <section class="head-admin">
-    <el-calendar v-model="value"> </el-calendar>
+    <!-- <el-calendar v-model="value"> </el-calendar> -->
   </section>
 </template>
 

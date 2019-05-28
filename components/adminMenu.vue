@@ -4,7 +4,7 @@
       <img class="logo" src="~/assets/belugaLogo.png" />
     </nuxt-link>
     <el-row>
-      <el-col :span="15">
+      <el-col :span="17">
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
