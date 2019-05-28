@@ -68,7 +68,7 @@
       layout: 'adminDefault',
       data() {
         return {
-          total_sale: 229,
+          total_sale: 0,
           tableData: [{
             date: '2016-05-03',
             product: 'Woman rings',
@@ -123,7 +123,7 @@
             { value: '31', label: '31'
            }], date: '', 
         }
-      }
+      },
     }
 </script>
 
