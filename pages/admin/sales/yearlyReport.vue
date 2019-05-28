@@ -14,7 +14,7 @@
       </el-col>
       <el-col :span="2">  
         <div class="grid-content bg-purple-light">
-          {{ total_sale }}
+          {{ totalSale }}
         </div>
       </el-col>
       <h3>$</h3>
@@ -67,36 +67,26 @@
   <script>
     export default {
       layout: 'adminDefault',
+      mounted(){
+        this.$store.dispatch("yearlyReport", this.year)
+    },
+    computed: {
+        tableData() {
+            return this.$store.state.Yearly
+        },
+        totalSale(){
+            const sales = this.$store.state.totalSaleY;
+            return sales.toFixed(2);
+        }
+    },
       data() {
         return {
-          total_sale: 9978,
-          tableData: [{
-            date: '2016-05-03',
-            product: 'Woman rings',
-            quantity: 5,
-            price: 99,
-          }, {
-            date: '2016-05-03',
-            product: 'gold pendant',
-            quantity: 2,
-            price: 22
-          }, {
-            date: '2016-05-03',
-            product: 'diamond earrings',
-            quantity: 1,
-            price: 55
-          }, {
-            date: '2016-05-03',
-            product: 'pearl rings',
-            quantity: 2,
-            price: 32
-          }],
           years: [{ value: '2019', label: '2019'}, 
             { value: '2018', label: '2018'}, 
             { value: '2017', label: '2017'}, 
             { value: '2016', label: '2016'}, 
             { value: '2015', label: '2015'
-           }], year: '', 
+           }], year: 2019, 
         }
       }
     }

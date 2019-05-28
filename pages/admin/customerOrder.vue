@@ -34,29 +34,21 @@
 </template>
 
 <script>
-  export default {
-      layout: 'adminDefault',
-      data() {
-        return {
-          total_sale: 229,
-          tableData: [{
-            customer: 'jamp',
-            product: 'diamond pendant',
-            price: 66,
-            date: '31/05/2019'
-          }, {
-            customer: 'mint',
-            product: 'pearl earrings',
-            price: 30,
-            date: '25/03/2019'
-          }, {
-            customer: 'faii',
-            product: 'saffire bangle',
-            price: 23,
-            date: '3/02/2018'
-          }],
+export default {
+    layout: 'adminDefault',
+    mounted(){
+        this.$store.dispatch("order")
+    },
+    computed: {
+        tableData() {
+            return this.$store.state.customerOrder
         }
-      }
-    }
+    },
+    data() {
+        return {
+        }
+    },
+      
+}
 </script>
 
