@@ -65,7 +65,19 @@ export const state = () => ({
         // },
     ],
 
-    womanrings: [
+    promotions:[{
+        id: 0,
+        namePromo:"1 free 1",
+        oldPrice: 55,
+        newPrice:45
+    
+    }],
+    shoppingbag: [{
+        imageUrl: require('../assets/ring.jpg'),
+        name: 'Ring',
+        price: '$14.99',
+    }],
+    womanrings:[
         {
             id: 2,
             name: 'Amethyst Ring',
@@ -192,7 +204,27 @@ export const state = () => ({
     }]
 })
 
+export const mutatuion = {
+    addToCart(state, payload) {
+        state.shoppingbag.push(payload);
+    }
+}
+
+export const actions = {
+    addToCart({ commit }, payload) {
+        const shopping =  {
+        imageUrl: payload.imageUrl,
+        name: payload.name,
+        price: payload.price,
+        }
+        commit('addToCart', shopping);
+    }
+}
+
 export const getters = {
+    bag(state) {
+        return state.shoppingbag
+    },
     isPromotion: (state) => (id) => {
         for (const j of state.promotions) {
             if (id === j.id) {

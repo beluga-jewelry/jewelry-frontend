@@ -74,6 +74,7 @@
 
 
 <script>
+
 export default {
   name: "Product",
   props: {
@@ -125,22 +126,24 @@ export default {
     }
   },
   methods: {
-    handleChange(value) {
-      console.log(value);
+      handleChange(value) {
+        console.log(value)
+      },
+      addtocart(options) {
+        //   this.$router.push("/bagpage");
+        console.log(options)
+      }
     }
   }
-};
 </script>
 
 <style>
 .image {
-  padding-left: 5px;
-  object-fit: contain;
-  margin: 15%;
-  /* size: 140px; */
-
-  width: 400px;
-  height: 400px;
+    padding-left: 5px;
+    object-fit: contain;
+    margin: 15%;
+    width: 400px;
+    height: 400px;
 }
 .product-name {
   margin-top: 20%;
