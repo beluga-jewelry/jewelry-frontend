@@ -1,6 +1,11 @@
 <template>
   <div class="head-content">
     <el-row>
+      <el-col :span="20">
+       <img :src="imageLogo" class="logo">
+      </el-col>
+    </el-row>
+    <el-row>
       <el-col :span="5" v-for="pro in promotion" :key="pro.id" offset="1">
         <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <img
@@ -23,7 +28,8 @@
 export default {
   data() {
     return {
-      promotion: this.$store.state.promotions
+      promotion: this.$store.state.promotions,
+      imageLogo: require('../assets/belugaLogo.png'),
     };
   }
 };
@@ -56,5 +62,10 @@ export default {
 
 .clearfix:after {
   clear: both;
+}
+.logo {
+  width: 250px;
+  height: 200px;
+  padding-left: 2%;
 }
 </style>

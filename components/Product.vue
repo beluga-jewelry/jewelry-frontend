@@ -16,6 +16,7 @@
                 <h2>
                     Ring
                 </h2>
+                <el-divider></el-divider>
             </div>
             <div class="product-detail">
                 <h4>Material: Diamond</h4>
@@ -59,7 +60,7 @@
                     <el-col
                     :span="6">
                         <div class="add-button">
-                            <el-button icon="el-icon-goods">Add to bag</el-button>
+                            <el-button icon="el-icon-goods" @click="addtocart">Add to bag</el-button>
                         </div>
                     </el-col>
                 </el-row>
@@ -71,6 +72,7 @@
 
 
 <script>
+
 export default {
   name: "Product",
   data() {
@@ -99,6 +101,10 @@ export default {
   methods: {
       handleChange(value) {
         console.log(value)
+      },
+      addtocart(options) {
+        //   this.$router.push("/bagpage");
+        console.log(options)
       }
     }
 };
@@ -109,8 +115,6 @@ export default {
     padding-left: 5px;
     object-fit: contain;
     margin: 15%;
-    /* size: 140px; */
-
     width: 400px;
     height: 400px;
 }

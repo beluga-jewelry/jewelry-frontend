@@ -70,5 +70,33 @@ export const state = () => ({
         oldPrice: 55,
         newPrice:45
     
+    }],
+    shoppingbag: [{
+        imageUrl: require('../assets/ring.jpg'),
+        name: 'Ring',
+        price: '$14.99',
     }]
 })
+
+export const mutatuion = {
+    addToCart(state, payload) {
+        state.shoppingbag.push(payload);
+    }
+}
+
+export const actions = {
+    addToCart({ commit }, payload) {
+        const shopping =  {
+        imageUrl: payload.imageUrl,
+        name: payload.name,
+        price: payload.price,
+        }
+        commit('addToCart', shopping);
+    }
+}
+
+export const getters = {
+    bag(state) {
+        return state.shoppingbag
+    }
+}
