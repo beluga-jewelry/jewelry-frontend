@@ -6,7 +6,7 @@
           >homepage</el-breadcrumb-item
         >
         <el-breadcrumb-item>
-          <nuxt-link :to="{ path: `/homepage` }" class="el-icon-goods">
+          <nuxt-link :to="{ path: `/bagpage` }" class="el-icon-goods">
             Shopping bag
           </nuxt-link>
         </el-breadcrumb-item>
@@ -34,6 +34,7 @@ export default {
 .main-navigation {
   display: flex;
   padding: 1.5em 6em;
-  padding-left: 900px;
+  padding-left: 1000px;
+  font-family: 'Tw Cen MT';
 }
 </style>
