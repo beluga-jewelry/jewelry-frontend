@@ -15,12 +15,6 @@ export const state = () => ({
     promotions: []
 })
 
-export const mutatuion = {
-    addToCart(state, payload) {
-        state.shoppingbag.push(payload);
-    }
-}
-
 export const actions = {
     addToCart({ commit }, payload) {
         const shopping = {
@@ -124,6 +118,7 @@ export const getters = {
         }
     }
 }
+
 export const mutations = {
     setCollections(state, product) {
         state.collections = product
@@ -148,6 +143,9 @@ export const mutations = {
     },
     setPromo(state, promo) {
         state.promotions = promo
+    },
+    addToCart(state, payload) {
+        state.shoppingbag.push(payload);
     }
 
 }
