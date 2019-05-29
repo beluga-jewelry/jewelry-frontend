@@ -15,7 +15,6 @@ export const state = () => ({
     }],
     manrings: [],
     promotions: [],
-<<<<<<< HEAD
     customerOrder : [],
     inStock: [],
     History: [],
@@ -24,11 +23,8 @@ export const state = () => ({
     Monthly: [],
     totalSaleM: 0,
     Yearly: [],
-    totalSaleY: 0
-
-=======
+    totalSaleY: 0,
     adminPromotion: []
->>>>>>> d78cd0aa60851648e8c817cb7cf15b7590a31c70
 })
 
 export const actions = {
@@ -106,7 +102,6 @@ export const actions = {
         console.log(getPromo)
         commit('setPromo', promo)
     },
-<<<<<<< HEAD
     async order({commit}) {
         const order = []
         let getOrder = await this.$axios.$get("/api/customer/order")
@@ -210,7 +205,7 @@ export const actions = {
         console.log(yearly)
         commit('setTotalPY', yy)
         commit('setYearly', yearly)
-=======
+    },    
     async adminPromotion({ commit }) {
         const promoAdmin = []
         let pro = await this.$axios.$get("/api/promotion/")
@@ -226,7 +221,6 @@ export const actions = {
         }
         console.log(promoAdmin)
         commit('setAdminPromo', promoAdmin)
->>>>>>> d78cd0aa60851648e8c817cb7cf15b7590a31c70
     }
 
     

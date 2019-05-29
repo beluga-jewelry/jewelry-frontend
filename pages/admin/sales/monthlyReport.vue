@@ -47,12 +47,12 @@
         </el-table-column>
         <el-table-column
           prop="product"
-          label="Product"
+          label="Product_name"
           width="250">
         </el-table-column>
         <el-table-column
-          prop="quantity"
-          label="Total quantity">
+          prop="type"
+          label="Product_type">
         </el-table-column>
         <el-table-column
           prop="price"
@@ -71,6 +71,7 @@
     },
     computed: {
         tableData() {
+            this.$store.dispatch("monthlyReport", this.month)
             return this.$store.state.Monthly
         },
         totalSale(){

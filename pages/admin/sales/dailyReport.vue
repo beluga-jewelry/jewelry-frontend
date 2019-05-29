@@ -71,11 +71,12 @@
     },
     computed: {
         tableData() {
+          this.$store.dispatch("dailyReport", this.date)
             return this.$store.state.Daily
         },
         totalSale(){
             return this.$store.state.totalSaleD
-        }
+        },
     },
     data() {
         return {
@@ -111,7 +112,7 @@
             { value: '30', label: '30'},
             { value: '31', label: '31'
            }], 
-           date: 8, 
+           date: 1, 
         }
       },
     }
