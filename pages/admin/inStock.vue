@@ -14,15 +14,20 @@
         <el-table-column
           prop="date"
           label="Date_stock"
-          width="225">
-        </el-table-column>
-        <el-table-column
-          prop="product"
-          label="Product_name">
+          width="150">
         </el-table-column>
         <el-table-column 
-          prop="material"
-          label="Material">
+          prop="product"
+          label="Product_name"
+          width="200">
+        </el-table-column>
+        <el-table-column 
+          prop="type"
+          label="Product_type">
+        </el-table-column>
+        <el-table-column 
+          prop="gender"
+          label="Gender">
         </el-table-column>
         <el-table-column 
           prop="quantity"
@@ -34,29 +39,20 @@
 </template>
 
 <script>
-  export default {
-      layout: 'adminDefault',
-      data() {
-        return {
-          total_sale: 229,
-          tableData: [{
-            date: '20/01/2009',
-            product: 'rings',
-            material: 'diamond',
-            quantity: 2,
-          }, {
-            date: '14/08/2011',
-            product: 'bangle',
-            material: 'ametis',
-            quantity: 1,
-          }, {
-            date: '20/01/2009',
-            product: 'pendant',
-            material: 'emeral',
-            quantity: 5,
-          }],
+export default {
+    layout: 'adminDefault',
+    mounted(){
+        this.$store.dispatch("instock")
+    },
+    computed: {
+        tableData() {
+            return this.$store.state.inStock
         }
-      }
-    }
+    },
+    data() {
+        return {
+        }
+    },
+}
 </script>
 

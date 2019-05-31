@@ -16,13 +16,13 @@
           label="Material"
           width="200">
         </el-table-column>
+        <el-table-column 
+          prop="colour"
+          label="Colour">
+        </el-table-column>
         <el-table-column
           prop="country"
           label="Country">
-        </el-table-column>
-        <el-table-column 
-          prop="quantity"
-          label="Quantity">
         </el-table-column>
       </el-table>
     </el-row>
@@ -30,26 +30,20 @@
 </template>
 
 <script>
-  export default {
-      layout: 'adminDefault',
-      data() {
-        return {
-          total_sale: 229,
-          tableData: [{
-            material: 'diamond',
-            country: 'Saudiarabia',
-            quantity: 2,
-          }, {
-            material: 'diamond',
-            country: 'spain',
-            quantity: 4,
-          }, {
-            material: 'ruby',
-            country: 'india',
-            quantity: 5,
-          }],
+export default {
+    layout: 'adminDefault',
+    mounted(){
+        this.$store.dispatch("history")
+    },
+    computed: {
+        tableData() {
+            return this.$store.state.History
         }
-      }
-    }
+    },
+    data() {
+        return {
+        }
+    },
+}
 </script>
 

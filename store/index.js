@@ -14,6 +14,15 @@ export const state = () => ({
     }],
     manrings: [],
     promotions: [],
+    customerOrder: [],
+    inStock: [],
+    History: [],
+    Daily: [],
+    totalSaleD: 0,
+    Monthly: [],
+    totalSaleM: 0,
+    Yearly: [],
+    totalSaleY: 0,
     adminPromotion: []
 })
 
@@ -92,6 +101,110 @@ export const actions = {
         console.log(getPromo)
         commit('setPromo', promo)
     },
+    async order({ commit }) {
+        const order = []
+        let getOrder = await this.$axios.$get("/api/customer/order")
+        console.log(getOrder)
+        for (const i of getOrder) {
+            const or = {
+                customer: i['customer_name'],
+                product: i['product_name'],
+                price: i['total_price'],
+                date: i['sale_date'].split("T")[0],
+            }
+            order.push(or)
+        }
+        console.log(order)
+        commit('setOrder', order)
+    },
+    async instock({ commit }) {
+        const inst = []
+        let getStock = await this.$axios.$get("/api/admin/stock")
+        console.log(getStock)
+        for (const i of getStock) {
+            const st = {
+                date: i['stock_date'].split("T")[0],
+                product: i['name'],
+                type: i['type'],
+                gender: i['gender'],
+                quantity: i['quantity'],
+            }
+            inst.push(st)
+        }
+        commit('setStock', inst)
+    },
+    async history({ commit }) {
+        const history = []
+        let getHistory = await this.$axios.$get("/api/admin/history")
+        console.log(getHistory)
+        for (const i of getHistory) {
+            const h = {
+                material: i['profile_material'],
+                country: i['profile_country'],
+                colour: i['color']
+            }
+            history.push(h)
+        }
+        console.log(history)
+        commit('setHistory', history)
+    },
+    async dailyReport({ commit }, day) {
+        let dd = 0
+        const daily = []
+        let getDaily = await this.$axios.$get("/api/admin/report/dialy/" + day)
+        console.log(getDaily)
+        for (const i of getDaily) {
+            const d = {
+                product: i['product_name'],
+                type: i['type'],
+                price: i['total_price'],
+                date: i['sale_date'].split("T")[0],
+            }
+            daily.push(d)
+            dd += i['total_price']
+        }
+        console.log(daily)
+        commit('setTotalPD', dd)
+        commit('setDaily', daily)
+    },
+    async monthlyReport({ commit }, month) {
+        let mm = 0
+        const monthly = []
+        let getMonthly = await this.$axios.$get("/api/admin/report/month/" + month)
+        console.log(getMonthly)
+        for (const i of getMonthly) {
+            const m = {
+                product: i['product_name'],
+                type: i['type'],
+                price: i['total_price'],
+                date: i['sale_date'].split("T")[0],
+            }
+            monthly.push(m)
+            mm += i['total_price']
+        }
+        console.log(monthly)
+        commit('setTotalPM', mm)
+        commit('setMonthly', monthly)
+    },
+    async yearlyReport({ commit }, year) {
+        let yy = 0
+        const yearly = []
+        let getYearly = await this.$axios.$get("/api/admin/report/year/" + year)
+        console.log(getYearly)
+        for (const i of getYearly) {
+            const y = {
+                product: i['product_name'],
+                type: i['type'],
+                price: i['total_price'],
+                date: i['sale_date'].split("T")[0],
+            }
+            yearly.push(y)
+            yy += i['total_price']
+        }
+        console.log(yearly)
+        commit('setTotalPY', yy)
+        commit('setYearly', yearly)
+    },
     async adminPromotion({ commit }) {
         const promoAdmin = []
         let pro = await this.$axios.$get("/api/promotion/")
@@ -112,16 +225,18 @@ export const actions = {
         let current_datetime = new Date()
         // let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
         const params = {
-            product_id: 5,
-            customer_id: 544,
+            product_id: 2,
+            customer_id: "5cf0f41f1c9d440000c2d2aa",
             quantity: 1,
-            total_price: 45,
+            total_price: 100,
             sale_date: current_datetime
 
         }
         let order = await this.$axios.$post("/api/user/order", params);
         console.log(order)
     }
+
+
 }
 
 export const getters = {
@@ -178,6 +293,33 @@ export const mutations = {
     },
     addToCart(state, payload) {
         state.shoppingbag.push(payload);
+    },
+    setOrder(state, order) {
+        state.customerOrder = order
+    },
+    setStock(state, instock) {
+        state.inStock = instock
+    },
+    setHistory(state, history) {
+        state.History = history
+    },
+    setDaily(state, daily) {
+        state.Daily = daily
+    },
+    setTotalPD(state, tpd) {
+        state.totalSaleD = tpd
+    },
+    setMonthly(state, monthly) {
+        state.Monthly = monthly
+    },
+    setTotalPM(state, tpm) {
+        state.totalSaleM = tpm
+    },
+    setYearly(state, yearly) {
+        state.Yearly = yearly
+    },
+    setTotalPY(state, tpy) {
+        state.totalSaleY = tpy
     },
     setAdminPromo(state, promoAdmin) {
         state.adminPromotion = promoAdmin
