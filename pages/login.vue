@@ -32,6 +32,9 @@
 
 export default {
   layout: "login",
+  mounted() {
+    this.$store.dispatch("orderCustomer");
+  },
   data() {
     return {
       user: {

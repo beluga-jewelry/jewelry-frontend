@@ -1,3 +1,4 @@
+// var ObjectId = require("mongodb").ObjectID;
 export const state = () => ({
 
     collections: [],
@@ -106,6 +107,20 @@ export const actions = {
         }
         console.log(promoAdmin)
         commit('setAdminPromo', promoAdmin)
+    },
+    async orderCustomer({ commit }) {
+        let current_datetime = new Date()
+        // let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
+        const params = {
+            product_id: 5,
+            customer_id: 544,
+            quantity: 1,
+            total_price: 45,
+            sale_date: current_datetime
+
+        }
+        let order = await this.$axios.$post("/api/user/order", params);
+        console.log(order)
     }
 }
 
