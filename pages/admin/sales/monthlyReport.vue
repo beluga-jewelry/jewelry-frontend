@@ -66,13 +66,19 @@
 <script>
   export default {
       layout: 'adminDefault',
-      mounted(){
-        this.$store.dispatch("monthlyReport", this.month)
-    },
     computed: {
         tableData() {
-            this.$store.dispatch("monthlyReport", this.month)
-            return this.$store.state.Monthly
+            if(this.temp == this.month) {
+                console.log(this.month)
+                console.log(this.temp)
+                return this.$store.state.Monthly
+            }
+            else {
+                this.temp = this.month
+                console.log(this.temp)
+                this.$store.dispatch("monthlyReport", this.temp)
+                return this.$store.state.Monthly
+            }
         },
         totalSale(){
             const sales = this.$store.state.totalSaleM;
@@ -93,7 +99,9 @@
             { value: '10', label: '10'}, 
             { value: '11', label: '11'}, 
             { value: '12', label: '12'
-           }], month: 5, 
+           }],
+           month: new Date().getMonth()+1, 
+           temp: 0,
         }
       }
     }

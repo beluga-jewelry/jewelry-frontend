@@ -14,11 +14,12 @@
         <el-table-column
           prop="date"
           label="Date_stock"
-          width="225">
+          width="150">
         </el-table-column>
         <el-table-column 
           prop="product"
-          label="Product_name">
+          label="Product_name"
+          width="200">
         </el-table-column>
         <el-table-column 
           prop="type"

@@ -45,7 +45,7 @@ export default {
     onSubmit() {
       if (this.user.username == "admin" && this.user.password == 1234) {
         this.userExist = true;
-        this.$router.push({ path: "./adminpage" });
+        this.$router.push({ path: "/admin/sales/dailyReport" });
       }
 
       if (!this.userExist) {

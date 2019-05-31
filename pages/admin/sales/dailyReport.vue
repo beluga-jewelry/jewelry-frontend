@@ -66,13 +66,19 @@
 <script>
   export default {
       layout: 'adminDefault',
-    mounted(){
-        this.$store.dispatch("dailyReport", this.date)
-    },
     computed: {
         tableData() {
-          this.$store.dispatch("dailyReport", this.date)
-            return this.$store.state.Daily
+            if(this.temp == this.date) {
+                console.log(this.date)
+                console.log(this.temp)
+                return this.$store.state.Daily
+            }
+            else {
+                this.temp = this.date
+                console.log(this.temp)
+                this.$store.dispatch("dailyReport", this.temp)
+                return this.$store.state.Daily
+            }
         },
         totalSale(){
             return this.$store.state.totalSaleD
@@ -112,7 +118,8 @@
             { value: '30', label: '30'},
             { value: '31', label: '31'
            }], 
-           date: 1, 
+           date: new Date().getDate(),
+           temp: 0, 
         }
       },
     }

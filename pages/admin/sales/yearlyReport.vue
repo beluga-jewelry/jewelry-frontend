@@ -67,13 +67,19 @@
   <script>
     export default {
       layout: 'adminDefault',
-      mounted(){
-        this.$store.dispatch("yearlyReport", this.year)
-    },
     computed: {
         tableData() {
-            this.$store.dispatch("yearlyReport", this.year)
-            return this.$store.state.Yearly
+            if(this.temp === this.year) {
+                console.log(this.year)
+                console.log(this.temp)
+                return this.$store.state.Yearly
+            }
+            else {
+                this.temp = this.year
+                console.log(this.temp)
+                this.$store.dispatch("yearlyReport", this.temp)
+                return this.$store.state.Yearly
+            }
         },
         totalSale(){
             const sales = this.$store.state.totalSaleY;
@@ -87,7 +93,9 @@
             { value: '2017', label: '2017'}, 
             { value: '2016', label: '2016'}, 
             { value: '2015', label: '2015'
-           }], year: 2019, 
+           }], 
+           year: new Date().getFullYear(), 
+           temp: 0,
         }
       }
     }
