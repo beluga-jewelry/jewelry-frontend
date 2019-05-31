@@ -4,12 +4,11 @@
       <el-col :span="20">
         <div class="topic-name">
           <h1>Shopping Bag</h1>
-          <el-divider class="divider"></el-divider>
         </div>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="20" class="table">
+      <el-col :span="14" class="table">
         <el-table :data="shoppingList" style="width: 100%">
           
             <el-table-column min-width="220">
@@ -22,7 +21,7 @@
             <el-table-column>
               <template slot-scope="scope">
                 <el-button
-                  @click.native.prevent="deleteRow(scope.$index, tableData)"
+                  @click.native.prevent="deleteRow(scope.$index, shoppingList)"
                   type="text"
                   size="small"
                 >Remove</el-button>
@@ -30,6 +29,18 @@
             </el-table-column>
           
         </el-table>
+      </el-col>
+      <el-col :span="7">
+          <el-card class="box-card" shadow="never">
+            <div slot="header" class="clearfix">
+                <span>Order summary</span>
+                <!-- <el-button type="text">Operation button</el-button> -->
+                <el-button style="float: right; padding: 3px 0" plain type="text" @click="proceedToCheckout">Checkout</el-button>
+            </div>
+            <div v-for="o in 4" :key="o" class="text item">
+                {{'List item ' + o }}
+            </div>
+            </el-card>
       </el-col>
     </el-row>
   </section>
@@ -40,7 +51,6 @@ export default {
   data() {
     return {
       num: 1,
-    //   imageUrl: require("../assets/ring.jpg"),
       options: [
         {
           value: "Option1",
@@ -63,36 +73,21 @@ export default {
           label: "Option5"
         }
       ],
-      value: "",
-      tableData: [
-        {
-          imageUrl: require("../assets/ring.jpg"),
-          name: "Ring",
-          price: '$14.99',
-        },
-        {
-          imageUrl: require("../assets/ring.jpg"),
-          name: "Ring",
-          price: '$14.99',
-        },
-        {
-          imageUrl: require("../assets/ring.jpg"),
-          name: "Ring",
-          price: '$14.99',
-        },
-        {
-          imageUrl: require("../assets/ring.jpg"),
-          name: "Ring",
-          price: '$14.99',
-        }
-      ]
+      value: '',
+      customerName: '',
+      customerAddress: '',
     };
   },
   computed: {
     shoppingList() {
-    //   return this.$store.state.shoppingbag;
-      return this.$store.getters.bag;
+      return this.$store.getters.loadedCart;
     }
+  },
+  methods: {
+      proceedToCheckout() {
+          console.log(this.shoppingList);
+          
+      }
   }
 };
 </script>
@@ -100,7 +95,7 @@ export default {
 
 <style>
 .topic-name {
-  padding-left: 20%;
+  padding-left: 8%;
   margin-top: 3%;
   font-size: 40px;
   font-family: "Tw Cen MT";
@@ -111,8 +106,8 @@ export default {
 }
 .image-shp {
   object-fit: contain;
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   /* margin-top: 15%;
     padding-left: 50%; */
 }
@@ -154,6 +149,28 @@ export default {
   margin-top: 3%;
 }
 .table {
-  padding-left: 17%;
+  padding-left: 7%;
+  padding-right:7%;
+}
+.text {
+    font-size: 14px;
+  }
+
+.item {
+    margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both
+}
+
+.box-card {
+    padding-left: 2%;
+    width: 480px;
 }
 </style>

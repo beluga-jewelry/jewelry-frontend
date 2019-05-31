@@ -7,11 +7,7 @@ export const state = () => ({
     earrings: [],
     pendants: [],
     bangles: [],
-    shoppingbag: [{
-        imageUrl: require('../assets/ring.jpg'),
-        name: 'Ring',
-        price: '$14.99',
-    }],
+    shoppingBag: [],
     manrings: [],
     promotions: [],
     customerOrder: [],
@@ -25,15 +21,17 @@ export const state = () => ({
     totalSaleY: 0,
     adminPromotion: []
 })
-
 export const actions = {
     addToCart({ commit }, payload) {
         const shopping = {
+            id: payload.id,
             imageUrl: payload.imageUrl,
             name: payload.name,
             price: payload.price,
+            quantity: payload.quantity,
+            size: payload.size,
         }
-        commit('addToCart', shopping);
+        commit('addToCart', shopping)
     },
     async productAll({ commit }) {
         const product = []
@@ -239,8 +237,8 @@ export const actions = {
 }
 
 export const getters = {
-    bag(state) {
-        return state.shoppingbag
+    loadedCart(state) {
+        return state.shoppingBag
     },
     isPromotion: (state) => (id) => {
         for (const j of state.promotions) {
@@ -322,6 +320,9 @@ export const mutations = {
     },
     setAdminPromo(state, promoAdmin) {
         state.adminPromotion = promoAdmin
-    }
+    },
+     addToCart(state, payload) {
+        state.shoppingBag.push(payload);
+    },
 
-}
+
