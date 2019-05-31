@@ -16,13 +16,13 @@
         <div class="product-detail">
           <h4>Material: {{ product.material }}</h4>
         </div>
-        <!-- promotion contidion -->
+        <!-- promotion condition -->
         <div v-if="promo" class="promo-product-price">
           <h2 class="cross-line">Price ${{ product.price }}</h2>
           <h2 class="promotions_css">
             Promotions "{{ promotionValue.promotion_name }}"
           </h2>
-          <h2>Price ${{ promoPrince }}</h2>
+          <h2>Price ${{ promoPrice }}</h2>
         </div>
         <div v-else class="promo-product-price">
           <h2>Price ${{ product.price }}</h2>
@@ -36,7 +36,7 @@
               </h4>
             </el-col>
             <el-input-number
-              v-model="num"
+              v-model="quantity"
               :min="1"
               :max="10"
             ></el-input-number>
@@ -49,7 +49,7 @@
             </el-col>
             <el-col :span="9">
               <div class="size-choice">
-                <el-select v-model="value" placeholder="Select size">
+                <el-select v-model="size" placeholder="Select size">
                   <el-option
                     v-for="item in options"
                     :key="item.value"
@@ -90,28 +90,24 @@ export default {
     return {
       id: Number(this.$route.params.id),
       visible: false,
-      num: 1,
-      value: '',
+      quantity: 1,
+      size: '',
       options: [
           {
-            value: "Option1",
-            label: "Option1"
+            value: "S",
+            label: "S"
           },
           {
-            value: "Option2",
-            label: "Option2"
+            value: "M",
+            label: "M"
           },
           {
-            value: "Option3",
-            label: "Option3"
+            value: "L",
+            label: "L"
           },
           {
-            value: "Option4",
-            label: "Option4"
-          },
-          {
-            value: "Option5",
-            label: "Option5"
+            value: "XL",
+            label: "XL"
           }
         ],
     };
@@ -126,7 +122,7 @@ export default {
     promotionValue() {
       return this.$store.getters.getPromotions(this.id);
     },
-    promoPrince() {
+    promoPrice() {
       const temp = this.$store.getters.getPromotions(this.id);
       const num = temp.discount * temp.price;
       return num.toFixed(2);
@@ -134,11 +130,27 @@ export default {
   },
   methods: {
       addtocart() {
-        // this.$router.push("/bagpage");
-        console.log(this.product.name)
-        console.log(this.product.price)
-        console.log(this.num)
-        console.log(this.value)
+        const productData = {
+            id: this.id,
+            imageUrl: this.product.image,
+            name: this.product.name,
+            price: this.promoPrice*this.quantity,
+            quantity: this.quantity,
+            size: this.size,
+        };
+        this.$store.dispatch("addToCart", productData);
+        this.$router.push("/bagpage");
+
+        // console.log(this.id)
+        // console.log(this.product.name)
+        // if ( this.promo == true ){
+        //     console.log(this.promoPrice*this.quantity)
+        // }
+        // else {
+        //     console.log(this.product.price*this.quantity)
+        // }
+        // console.log(this.quantity)
+        // console.log(this.size)
       }
     }
   }

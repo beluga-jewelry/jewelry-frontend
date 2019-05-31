@@ -6,30 +6,53 @@ export const state = () => ({
     earrings: [],
     pendants: [],
     bangles: [],
-    ],
-    shoppingbag: [{
-        imageUrl: require('../assets/ring.jpg'),
-        name: 'Ring',
-        price: '$14.99',
-    }],
+    shoppingBag: [],
     manrings: [],
     promotions: []
 })
 
-export const mutatuion = {
+export const mutations = {
     addToCart(state, payload) {
-        state.shoppingbag.push(payload);
+        state.shoppingBag.push(payload);
+    },
+    setCollections(state, product) {
+        state.collections = product
+    },
+    setProductMen(state, ringmen) {
+        state.manrings = ringmen
+    },
+    setNewCollections(state, productNew) {
+        state.newCollection = productNew
+    },
+    setBangle(state, bangle) {
+        state.bangles = bangle
+    },
+    setPendant(state, pendant) {
+        state.pendants = pendant
+    },
+    setEarring(state, earring) {
+        state.earrings = earring
+    },
+    setWomanRing(state, ring) {
+        state.womanrings = ring
+    },
+    setPromo(state, promo) {
+        state.promotions = promo
     }
+
 }
 
 export const actions = {
     addToCart({ commit }, payload) {
         const shopping = {
+            id: payload.id,
             imageUrl: payload.imageUrl,
             name: payload.name,
             price: payload.price,
+            quantity: payload.quantity,
+            size: payload.size,
         }
-        commit('addToCart', shopping);
+        commit('addToCart', shopping)
     },
     async productAll({ commit }) {
         const product = []
@@ -99,8 +122,8 @@ export const actions = {
 }
 
 export const getters = {
-    bag(state) {
-        return state.shoppingbag
+    loadedCart(state) {
+        return state.shoppingBag
     },
     isPromotion: (state) => (id) => {
         for (const j of state.promotions) {
@@ -124,30 +147,4 @@ export const getters = {
         }
     }
 }
-export const mutations = {
-    setCollections(state, product) {
-        state.collections = product
-    },
-    setProductMen(state, ringmen) {
-        state.manrings = ringmen
-    },
-    setNewCollections(state, productNew) {
-        state.newCollection = productNew
-    },
-    setBangle(state, bangle) {
-        state.bangles = bangle
-    },
-    setPendant(state, pendant) {
-        state.pendants = pendant
-    },
-    setEarring(state, earring) {
-        state.earrings = earring
-    },
-    setWomanRing(state, ring) {
-        state.womanrings = ring
-    },
-    setPromo(state, promo) {
-        state.promotions = promo
-    }
 
-}
