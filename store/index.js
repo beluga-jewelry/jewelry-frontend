@@ -30,6 +30,7 @@ export const actions = {
             price: payload.price,
             quantity: payload.quantity,
             size: payload.size,
+            promotion_id: payload.promotion_id,
         }
         commit('addToCart', shopping)
     },
@@ -211,6 +212,7 @@ export const actions = {
             const temp = {
                 promotion_name: i['promotion_name'],
                 discount: i['discount'] * 100,
+                used_amount: i['used_amount'],
                 begin_date: i['begin_date'].split("T")[0],
                 end_date: i['end_date'].split("T")[0]
             }
@@ -223,7 +225,7 @@ export const actions = {
         let current_datetime = new Date()
 
         // let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
-        console.log("hello")
+        console.log(shoppingList)
         for (const i of shoppingList) {
             console.log(i['id'])
             console.log(i['quantity'])
@@ -234,6 +236,7 @@ export const actions = {
                 customer_id: "5cf0f41f1c9d440000c2d2aa",
                 quantity: i['quantity'],
                 total_price: i['price'],
+                promotion_id: i['promotion_id'],
                 sale_date: current_datetime
             }
             let order = await this.$axios.$post("/api/user/order", params);
@@ -269,6 +272,13 @@ export const getters = {
             }
         }
     },
+    getPromotionsId: (state) => (id) => {
+        for (const j of state.promotions) {
+            if (id === j._id) {
+                return j.promotion_id
+            }
+        }
+    }
 }
 
 export const mutations = {

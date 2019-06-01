@@ -140,7 +140,9 @@ export default {
             price: this.promoPrice*this.quantity,
             quantity: this.quantity,
             size: this.size,
+            promotion_id: this.$store.getters.getPromotionsId(this.id),
         };
+        // console.log(this.$store.getters.getPromotionsId(this.id))
         this.$store.dispatch("addToCart", productData);
         this.$router.push("/bagpage");
 
