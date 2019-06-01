@@ -12,9 +12,9 @@
         <el-table :data="shoppingList" style="width: 100%">
           
             <el-table-column label="Product" min-width="220">
-                <div slot-scope="{row}" class="img-shp">
-                    <img :src="row.imageUrl">
-                </div>
+                <!-- <div  > -->
+                <img slot-scope="{row}" :src="row.imageUrl"  height="150" width="150">
+                <!-- </div> -->
             </el-table-column>
             <el-table-column prop="name" width="180"></el-table-column>
             <el-table-column prop="quantity" label="Quantity"></el-table-column>
@@ -106,7 +106,7 @@ export default {
   width: 100%;
 }
 .image-shp {
-  object-fit: contain;
+  /* object-fit: contain; */
   width: 50px;
   height: 50px;
   /* margin-top: 15%;
