@@ -221,8 +221,9 @@ export const actions = {
     },
     async orderCustomer({ commit }, shoppingList) {
         let current_datetime = new Date()
+
         // let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
-        console.log(shoppingList)
+        console.log("hello")
         for (const i of shoppingList) {
             console.log(i['id'])
             console.log(i['quantity'])

@@ -65,7 +65,7 @@
           <el-row>
             <el-col :span="6">
               <div class="add-button">
-                <el-button icon="el-icon-goods" @click="addtocart">Add to bag</el-button>
+                <el-button icon="el-icon-goods" @click="addtocart" :disabled="dataIsValid">Add to bag</el-button>
               </div>
             </el-col>
           </el-row>
@@ -126,6 +126,9 @@ export default {
       const temp = this.$store.getters.getPromotions(this.id);
       const num = temp.discount * temp.price;
       return num.toFixed(2);
+    },
+    dataIsValid() {
+        return this.size == '' 
     }
   },
   methods: {

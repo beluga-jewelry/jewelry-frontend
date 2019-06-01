@@ -88,6 +88,15 @@ export default {
       proceedToCheckout() {
         //   console.log(this.shoppingList);
           this.$store.dispatch("orderCustomer",this.shoppingList);
+          this.$alert('You just completed your order.', 'Thanks for your order', {
+          confirmButtonText: 'OK',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
       },
   }
 };
