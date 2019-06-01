@@ -1,6 +1,6 @@
 <template>
   <div class="head-content">
-    <JewCard v-for="coll in collection" :key="coll._id" :coll="coll" />
+    <JewCard v-for="coll in bangles" :key="coll.id" :coll="coll" />
   </div>
 </template>
 
@@ -11,13 +11,11 @@ export default {
     JewCard
   },
   mounted() {
-    this.$store.dispatch("productAll");
-    this.$store.dispatch("productNew");
-    this.$store.dispatch("promotions");
+    this.$store.dispatch("productBangles");
   },
   computed: {
-    collection() {
-      return this.$store.state.newCollection;
+    bangles() {
+      return this.$store.state.bangles;
     }
   }
 };

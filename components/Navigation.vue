@@ -2,20 +2,19 @@
   <section class="container">
     <nav class="main-navigation">
       <el-breadcrumb separator="|">
-        <el-breadcrumb-item :to="{ path: '/homepage' }"
-          class="el-icon-house"
+        <el-breadcrumb-item :to="{ path: '/homepage' }" class="el-icon-house"
           >homepage</el-breadcrumb-item
         >
-        <el-breadcrumb-item
-          ><a href="/homepage" ≈
-              class="el-icon-goods"
-          >Shopping bag</a></el-breadcrumb-item
-        >
-        <el-breadcrumb-item
-          ><a href="/homepage" ≈
-              class="el-icon-user"
-          >Admin</a></el-breadcrumb-item
-        >
+        <el-breadcrumb-item>
+          <nuxt-link :to="{ path: `/bagpage` }" class="el-icon-goods">
+            Shopping bag
+          </nuxt-link>
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>
+          <nuxt-link :to="{ path: `/login` }">
+           Admin
+          </nuxt-link>
+        </el-breadcrumb-item>
       </el-breadcrumb>
     </nav>
     <menuBar />
@@ -36,5 +35,6 @@ export default {
   display: flex;
   padding: 1.5em 6em;
   padding-left: 1000px;
+  font-family: 'Tw Cen MT';
 }
 </style>
