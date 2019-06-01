@@ -18,8 +18,8 @@
             </el-table-column>
             <el-table-column prop="name" width="180"></el-table-column>
             <el-table-column prop="quantity" label="Quantity"></el-table-column>
+            <el-table-column prop="size" label="Size"></el-table-column>
             <el-table-column prop="price" label="Price ($)"></el-table-column>
-          
         </el-table>
       </el-col>
       <el-col :span="7">
@@ -70,7 +70,7 @@ export default {
       value: '',
       customerName: '',
       customerAddress: '',
-      totalPrice: '0',
+      totalPrice: 0,
     };
   },
   computed: {
