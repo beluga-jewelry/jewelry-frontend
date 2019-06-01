@@ -11,22 +11,14 @@
       <el-col :span="14" class="table">
         <el-table :data="shoppingList" style="width: 100%">
           
-            <el-table-column min-width="220">
+            <el-table-column label="Product" min-width="220">
                 <div slot-scope="{row}" class="img-shp">
                     <img :src="row.imageUrl">
                 </div>
             </el-table-column>
             <el-table-column prop="name" width="180"></el-table-column>
-            <el-table-column prop="price"></el-table-column>
-            <el-table-column>
-              <template slot-scope="scope">
-                <el-button
-                  @click.native.prevent="deleteRow(scope.$index, shoppingList)"
-                  type="text"
-                  size="small"
-                >Remove</el-button>
-              </template>
-            </el-table-column>
+            <el-table-column prop="quantity" label="Quantity"></el-table-column>
+            <el-table-column prop="price" label="Price ($)"></el-table-column>
           
         </el-table>
       </el-col>
@@ -34,12 +26,14 @@
           <el-card class="box-card" shadow="never">
             <div slot="header" class="clearfix">
                 <span>Order summary</span>
-                <!-- <el-button type="text">Operation button</el-button> -->
                 <el-button style="float: right; padding: 3px 0" plain type="text" @click="proceedToCheckout">Checkout</el-button>
             </div>
-            <div v-for="o in 4" :key="o" class="text item">
-                {{'List item ' + o }}
-            </div>
+            <!-- <div class="line-separator-shp"></div> -->
+            <!-- <div v-for="i in shoppingList" :key="i" class="listProduct">
+                {{ shoppingList[i]['name'] + shoppingList[i]['price']}}
+            </div> -->
+            <span>Subtotal</span>
+            <span style="float: right; padding: 3px 0">${{this.subTotal}}</span>
             </el-card>
       </el-col>
     </el-row>
@@ -76,18 +70,25 @@ export default {
       value: '',
       customerName: '',
       customerAddress: '',
+      totalPrice: '0',
     };
   },
   computed: {
     shoppingList() {
       return this.$store.getters.loadedCart;
+    },
+    subTotal() {
+        for(let i = 0; i < this.shoppingList.length; i++){
+            this.totalPrice += this.shoppingList[i]['price']
+        }
+        return this.totalPrice
     }
   },
   methods: {
       proceedToCheckout() {
-          console.log(this.shoppingList);
-          
-      }
+        //   console.log(this.shoppingList);
+          this.$store.dispatch("orderCustomer",this.shoppingList);
+      },
   }
 };
 </script>
@@ -172,5 +173,12 @@ export default {
 .box-card {
     padding-left: 2%;
     width: 480px;
+}
+.line-separator-shp{
+  height:1px;
+  background:#313030;
+  /* padding-left: 200px; */
+  margin-top: 2%;
+  /* border-bottom:1px solid #313030; */
 }
 </style>

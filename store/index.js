@@ -219,19 +219,26 @@ export const actions = {
         console.log(promoAdmin)
         commit('setAdminPromo', promoAdmin)
     },
-    async orderCustomer({ commit }) {
+    async orderCustomer({ commit }, shoppingList) {
         let current_datetime = new Date()
         // let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
-        const params = {
-            product_id: 2,
-            customer_id: "5cf0f41f1c9d440000c2d2aa",
-            quantity: 1,
-            total_price: 100,
-            sale_date: current_datetime
+        console.log(shoppingList)
+        for (const i of shoppingList) {
+            console.log(i['id'])
+            console.log(i['quantity'])
+            console.log(i['price'])
+
+            const params = {
+                product_id: i['id'],
+                customer_id: "5cf0f41f1c9d440000c2d2aa",
+                quantity: i['quantity'],
+                total_price: i['price'],
+                sale_date: current_datetime
+            }
+            let order = await this.$axios.$post("/api/user/order", params);
+            console.log(order)
 
         }
-        let order = await this.$axios.$post("/api/user/order", params);
-        console.log(order)
     }
 
 }
@@ -321,8 +328,9 @@ export const mutations = {
     setAdminPromo(state, promoAdmin) {
         state.adminPromotion = promoAdmin
     },
-     addToCart(state, payload) {
+    addToCart(state, payload) {
         state.shoppingBag.push(payload);
     },
 
 
+}
